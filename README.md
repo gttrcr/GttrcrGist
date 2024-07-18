@@ -13,3 +13,12 @@ Search for new releases using the github api.
 
 ## YouTubeToMP3MP4.cs
 Converting YouTube videos to MP3 or MP4.
+
+## Warning (it fill be fixed in future updates)
+Add in c# project file
+```
+  <ItemGroup>
+    <PackageReference Include="MediaToolkit" Version="1.1.0.1" />
+    <PackageReference Include="VideoLibrary" Version="3.2.4" />
+  </ItemGroup>
+```

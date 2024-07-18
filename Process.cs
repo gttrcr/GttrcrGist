@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 
 namespace GttrcrGist
 {
-    public static class Process
+    public class Process
     {
         public struct OSCommand
         {

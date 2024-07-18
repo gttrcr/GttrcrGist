@@ -8,7 +8,7 @@ using System.Drawing;
 
 namespace GttrcrGist
 {
-    internal class Program
+    public class YouTubeToMP3MP4
     {
         enum Type
         {
@@ -17,7 +17,7 @@ namespace GttrcrGist
             Playlist
         }
 
-        private static void Main(string[] args)
+        public static void Run(string[] args)
         {
             string exportPath = "./";
             Console.Write("Video or playlist URL: ");

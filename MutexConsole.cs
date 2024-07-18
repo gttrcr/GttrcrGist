@@ -1,6 +1,6 @@
 namespace GttrcrGist
 {
-    public static class MutexConsole
+    public class MutexConsole
     {
         private static readonly Mutex ConsoleWriteMutex = new();
         private static List<int> Xs = [];

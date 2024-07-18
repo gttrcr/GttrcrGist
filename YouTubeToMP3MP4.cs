@@ -5,6 +5,13 @@ using MediaToolkit.Model;
 using VideoLibrary;
 using System.Text.RegularExpressions;
 using System.Drawing;
+using System;
+using System.Net.Http;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace GttrcrGist
 {
@@ -147,7 +154,7 @@ namespace GttrcrGist
         private static List<string> GetLinksPlaylist(string html)
         {
             List<string> ret = new List<string>();
-            List<Match> matchs = Regex.Matches(html, @"index=\d+").ToList();
+            List<Match> matchs = Regex.Matches(html, @"index=\d+").Cast<Match>().ToList();
             for (int i = 0; i < matchs.Count; i++)
             {
                 Console.WriteLine("Found " + matchs[i].Value + " at " + matchs[i].Index);

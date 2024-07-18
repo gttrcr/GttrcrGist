@@ -1,6 +1,10 @@
 ﻿using System.Text;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 
 namespace GttrcrGist
 {
@@ -62,7 +66,7 @@ namespace GttrcrGist
             }
 
             if (process.ExitCode == 0)
-                return [.. stdOutput.ToString().Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries)];
+                return [.. stdOutput.ToString().Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries)];
             else
             {
                 StringBuilder message = new();
@@ -120,8 +124,8 @@ namespace GttrcrGist
 
         public static OSPlatform GetOS()
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.FreeBSD))
-                return OSPlatform.FreeBSD;
+            // if (RuntimeInformation.IsOSPlatform(OSPlatform.FreeBSD))
+            //     return OSPlatform.FreeBSD;
 
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
                 return OSPlatform.Linux;

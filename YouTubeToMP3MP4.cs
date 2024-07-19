@@ -62,11 +62,11 @@ namespace GttrcrGist
                 .Replace("www.", "")
                 .Replace("youtube.com/", "").Trim();
 
-            HttpClient client = new HttpClient();
+            HttpClient client = new();
             client.BaseAddress = new Uri("https://www.youtube.com");
             var result = client.GetAsync(pathUrl).Result;
             var content = result.Content.ReadAsStringAsync().Result;
-            List<string> links = new List<string>();
+            List<string> links = [];
             if (urlType == Type.Playlist)
                 links = GetLinksPlaylist(content);
             else if (urlType == Type.Video)
@@ -79,18 +79,18 @@ namespace GttrcrGist
             }
 
             string title = GetTitle(content);
-            string baseDir = (urlType == Type.Playlist ? exportPath + "\\" + title + "\\" : exportPath);
+            string baseDir = urlType == Type.Playlist ? exportPath + "\\" + title + "\\" : exportPath;
             if (!Directory.Exists(baseDir) && urlType == Type.Playlist)
                 Directory.CreateDirectory(baseDir);
 
             var youtube = YouTube.Default;
-            Engine engine = new Engine();
+            Engine engine = new();
 
-            Mutex writeMtx = new Mutex();
+            Mutex writeMtx = new();
             const int maxAttempt = 4;
             Parallel.ForEach(links, link =>
             {
-                Point pt = new Point();
+                Point pt = new();
                 for (int attempt = 0; attempt < maxAttempt; attempt++)
                 {
                     try
@@ -117,8 +117,8 @@ namespace GttrcrGist
                         writeMtx.ReleaseMutex();
 
                         File.WriteAllBytes(completeFilePath, vid.GetBytes());
-                        MediaFile inputFile = new MediaFile { Filename = completeFilePath };
-                        MediaFile outputFile = new MediaFile { Filename = baseDir + Path.GetFileNameWithoutExtension(completeFilePath) + ".mp3" };
+                        MediaFile inputFile = new() { Filename = completeFilePath };
+                        MediaFile outputFile = new() { Filename = baseDir + Path.GetFileNameWithoutExtension(completeFilePath) + ".mp3" };
                         engine.GetMetadata(inputFile);
                         engine.Convert(inputFile, outputFile);
                         Console.SetCursorPosition(pt.X + 1, pt.Y);
@@ -153,7 +153,7 @@ namespace GttrcrGist
 
         private static List<string> GetLinksPlaylist(string html)
         {
-            List<string> ret = new List<string>();
+            List<string> ret = [];
             List<Match> matchs = Regex.Matches(html, @"index=\d+").Cast<Match>().ToList();
             for (int i = 0; i < matchs.Count; i++)
             {

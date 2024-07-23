@@ -1,5 +1,7 @@
 // forked from leandro-almeida/Main.cs
 
+#if !NETSTANDARD
+
 using MediaToolkit;
 using MediaToolkit.Model;
 using VideoLibrary;
@@ -171,3 +173,5 @@ namespace GttrcrGist
         }
     }
 }
+
+#endif

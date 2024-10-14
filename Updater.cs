@@ -103,7 +103,7 @@ namespace GttrcrGist
             return result;
         }
 
-        private Result? Run()
+        public Result? Run()
         {
             try
             {

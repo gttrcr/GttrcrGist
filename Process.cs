@@ -1,10 +1,6 @@
-﻿using System.Text;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Runtime.InteropServices;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+using System.Text;
 
 namespace GttrcrGist
 {

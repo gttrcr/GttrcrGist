@@ -34,6 +34,7 @@ namespace GttrcrGist
 
         private static Updater? _instance;
         private Thread? _updateCheckerThread;
+        private static readonly object _lock = new object();
 
         //Hide the NewVersionAvailableCallback
         public bool Hide { get; set; }
@@ -87,6 +88,14 @@ namespace GttrcrGist
             _instance ??= new();
 
             return _instance;
+        }
+
+        public static void Reset()
+        {
+            lock (_lock)
+            {
+                _instance = null;
+            }
         }
 
         public Result? GetLatest()

@@ -34,7 +34,7 @@ namespace GttrcrGist
 
         private static Updater? _instance;
         private Thread? _updateCheckerThread;
-        private static readonly object _lock = new object();
+        private static readonly object _lock = new();
 
         //Hide the NewVersionAvailableCallback
         public bool Hide { get; set; }

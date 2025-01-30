@@ -156,7 +156,7 @@ namespace GttrcrGist
         private static List<string> GetLinksPlaylist(string html)
         {
             List<string> ret = [];
-            List<Match> matchs = Regex.Matches(html, @"index=\d+").Cast<Match>().ToList();
+            List<Match> matchs = [.. Regex.Matches(html, @"index=\d+").Cast<Match>()];
             for (int i = 0; i < matchs.Count; i++)
             {
                 Console.WriteLine("Found " + matchs[i].Value + " at " + matchs[i].Index);

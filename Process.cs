@@ -109,8 +109,8 @@ namespace GttrcrGist
             if (!oSCommands.Any(x => x.OSPlatform.Equals(os)))
                 throw new PlatformNotSupportedException();
 
-            List<OSCommand> oSCmds = oSCommands.Where(x => x.OSPlatform.Equals(os)).ToList();
-            return oSCmds.Select(x => Run(x.Executable, x.Command, x.ProcessStartedCallback)).ToList();
+            List<OSCommand> oSCmds = [.. oSCommands.Where(x => x.OSPlatform.Equals(os))];
+            return [.. oSCmds.Select(x => Run(x.Executable, x.Command, x.ProcessStartedCallback))];
         }
 
         private static string Format(string filename, string? arguments)

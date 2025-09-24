@@ -103,6 +103,11 @@ namespace GttrcrGist
             return false;
         }
 
+        public static List<string> Run(OSCommand oSCommands)
+        {
+            return Run([oSCommands]).First();
+        }
+
         public static List<List<string>> Run(List<OSCommand> oSCommands)
         {
             OSPlatform os = GetOS();

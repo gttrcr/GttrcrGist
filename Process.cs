@@ -111,10 +111,10 @@ namespace GttrcrGist
         public static List<List<string>> Run(List<OSCommand> oSCommands)
         {
             OSPlatform os = GetOS();
-            if (!oSCommands.Any(x => x.OSPlatform.Equals(os)))
+            if (!oSCommands.Any(x => x.OSPlatform.Equals(os) || x.OSPlatform.Equals(new OSPlatform())))
                 throw new PlatformNotSupportedException();
 
-            List<OSCommand> oSCmds = [.. oSCommands.Where(x => x.OSPlatform.Equals(os))];
+            List<OSCommand> oSCmds = [.. oSCommands.Where(x => x.OSPlatform.Equals(os) || x.OSPlatform.Equals(new OSPlatform()))];
             return [.. oSCmds.Select(x => Run(x.Executable, x.Command, x.ProcessStartedCallback))];
         }
 

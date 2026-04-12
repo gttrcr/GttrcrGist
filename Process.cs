@@ -23,12 +23,12 @@ namespace GttrcrGist
                 if (os.Equals(OSPlatform.Linux))
                 {
                     executable = "/bin/bash";
-                    command = "-c \"" + command + "\"";
+                    command = $"-c \"{command}\"";
                 }
                 else if (os.Equals(OSPlatform.Windows))
                 {
                     executable = "C:\\Windows\\system32\\cmd.exe";
-                    command = "/c \"" + command + "\"";
+                    command = $"/c \"{command}\"";
                 }
                 else
                     throw new PlatformNotSupportedException();

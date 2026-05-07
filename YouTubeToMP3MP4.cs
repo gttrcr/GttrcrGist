@@ -144,7 +144,7 @@ namespace GttrcrGist
                 var ini = content.IndexOf(t) + t.Length;
                 var fim = content.IndexOf("</title>");
                 var title = content[ini..fim];
-                title = title.EndsWith(" - YouTube") ? title.Remove(title.LastIndexOf(" - YouTube")) : title;
+                title = title.EndsWith(" - YouTube") ? title[..title.LastIndexOf(" - YouTube")] : title;
                 return title.Trim();
             }
             catch (Exception)
